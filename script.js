@@ -1,25 +1,43 @@
-const data = [
-  { title: "Fix login bug", status: "Open" },
-  { title: "Improve load time", status: "Blocked" },
-  { title: "Refactor API", status: "Done" }
-];
+async function loadData() {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/todos?_limit=10");
+    const data = await response.json();
 
-// Update counts
-document.getElementById("open-count").textContent = 1;
-document.getElementById("blocked-count").textContent = 1;
-document.getElementById("done-count").textContent = 1;
+    console.log("API data:", data);
 
-// Populate table
-const tableBody = document.getElementById("table-body");
-tableBody.innerHTML = "";
+    updateDashboard(data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
 
-data.forEach(item => {
-  const row = document.createElement("tr");
+function updateDashboard(data) {
+  const tableBody = document.getElementById("table-body");
+  tableBody.innerHTML = "";
 
-  row.innerHTML = `
-    <td>${item.title}</td>
-    <td>${item.status}</td>
-  `;
+  let open = 0;
+  let completed = 0;
 
-  tableBody.appendChild(row);
-});
+  data.forEach(item => {
+    if (item.completed) {
+      completed++;
+    } else {
+      open++;
+    }
+
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+      <td>${item.title}</td>
+      <td>${item.completed ? "Done" : "Open"}</td>
+    `;
+
+    tableBody.appendChild(row);
+  });
+
+  document.getElementById("open-count").textContent = open;
+  document.getElementById("done-count").textContent = completed;
+  document.getElementById("blocked-count").textContent = 0; // placeholder
+}
+
+loadData();
