@@ -28,11 +28,14 @@ function updateDashboard(data) {
     const row = document.createElement("tr");
 
     row.innerHTML = `
-      <td>${item.title}</td>
-      <td>$User {item.userId}</td>
-      <td>${item.completed ? "Done" : "Open"}</td>
-      
-    `;
+
+  <td>${item.userId}</td>
+
+  <td>${item.title}</td>
+
+  <td>${item.completed ? "Done" : "Open"}</td>
+
+`;
 
     tableBody.appendChild(row);
   });
