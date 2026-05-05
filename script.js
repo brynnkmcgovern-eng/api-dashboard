@@ -30,7 +30,7 @@ function updateDashboard(data) {
     row.innerHTML = `
       <td>${item.title}</td>
       <td>${item.completed ? "Done" : "Open"}</td>
-      <td>${item.id}</td>
+      <td>${item.userId}</td>
     `;
 
     tableBody.appendChild(row);
