@@ -29,8 +29,9 @@ function updateDashboard(data) {
 
     row.innerHTML = `
       <td>${item.title}</td>
-      <td>${item.completed ? "Done" : "Open"}</td>
       <td>$User {item.userId}</td>
+      <td>${item.completed ? "Done" : "Open"}</td>
+      
     `;
 
     tableBody.appendChild(row);
