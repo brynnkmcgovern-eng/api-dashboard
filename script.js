@@ -32,6 +32,7 @@ function updateDashboard(data) {
       <td>${item.completed ? "Done" : "Open"}</td>
       <td>${item.userId}</td>
     `;
+    console.log("userId:", {item.userId});
 
     tableBody.appendChild(row);
   });
