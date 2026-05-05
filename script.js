@@ -29,11 +29,11 @@ function updateDashboard(data) {
 
     row.innerHTML = `
 
-  <td>${item.userId}</td>
-
   <td>${item.title}</td>
 
   <td>${item.completed ? "Done" : "Open"}</td>
+  
+  <td>${item.userId}</td>
 
 `;
 
